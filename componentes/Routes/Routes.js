@@ -1,5 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Entypo, Feather } from '@expo/vector-icons'
 
 import Home from '../Home/Home'
 import Menu from '../Menu/Menu'
@@ -12,6 +13,7 @@ export default function Routes() {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: constants.styles.tertiaryColor,
         tabBarInactiveTintColor: constants.styles.secondaryColor,
         tabBarStyle: [
@@ -25,9 +27,35 @@ export default function Routes() {
         ]
       }}
     >
-      <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='Menu' component={Menu} />
-      <Tab.Screen name='Settings' component={Settings} />
+      <Tab.Screen
+        name='Home'
+        component={Home}
+        options={{
+          tabBarIcon: ({size, color}) => (
+            <Entypo name='home' size={size} color={color}/>
+          )
+        }}
+      />
+
+      <Tab.Screen
+        name='Menu'
+        component={Menu}
+        options={{
+          tabBarIcon: ({size, color}) => (
+            <Feather name='menu' size={size} color={color}/>
+          )
+        }}
+      />
+
+      <Tab.Screen
+        name='Configurações'
+        component={Settings}
+        options={{
+          tabBarIcon: ({size, color}) => (
+            <Feather name='settings' size={size} color={color}/>
+          )
+        }}
+      />
     </Tab.Navigator>
   )
 }
