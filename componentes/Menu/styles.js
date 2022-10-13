@@ -5,7 +5,10 @@ export const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: constants.styles.secondaryColor,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  button: {
+    width: 50
   }
 })
