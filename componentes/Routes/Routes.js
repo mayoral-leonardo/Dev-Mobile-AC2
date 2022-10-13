@@ -1,15 +1,24 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
 import { Entypo, Feather } from '@expo/vector-icons'
+import { constants } from '../../constants'
 
 import Home from '../Home/Home'
 import Menu from '../Menu/Menu'
 import Settings from '../Settings/Settings'
-import { constants } from '../../constants'
+
+import Alunos from '../Alunos/Alunos'
+import Disciplinas from '../Disciplinas/Disciplinas'
+import Historico from '../Historico/Historico'
+import Professores from '../Professores/Professores'
+import Turmas from '../Turmas/Turmas'
 
 const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
 
-export default function Routes() {
+function NavigationTab() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,8 +40,8 @@ export default function Routes() {
         name='Home'
         component={Home}
         options={{
-          tabBarIcon: ({size, color}) => (
-            <Entypo name='home' size={size} color={color}/>
+          tabBarIcon: ({ size, color }) => (
+            <Entypo name='home' size={size} color={color} />
           )
         }}
       />
@@ -41,8 +50,8 @@ export default function Routes() {
         name='Menu'
         component={Menu}
         options={{
-          tabBarIcon: ({size, color}) => (
-            <Feather name='menu' size={size} color={color}/>
+          tabBarIcon: ({ size, color }) => (
+            <Feather name='menu' size={size} color={color} />
           )
         }}
       />
@@ -51,11 +60,60 @@ export default function Routes() {
         name='Configurações'
         component={Settings}
         options={{
-          tabBarIcon: ({size, color}) => (
-            <Feather name='settings' size={size} color={color}/>
+          tabBarIcon: ({ size, color }) => (
+            <Feather name='settings' size={size} color={color} />
           )
         }}
       />
     </Tab.Navigator>
+  )
+}
+
+export default function Routes() {
+  return (
+    <NavigationContainer>
+
+      <Stack.Navigator>
+
+        <Stack.Screen
+          name='main'
+          component={NavigationTab}
+          options={{
+            headerShown: false
+          }
+          }
+        />
+
+        <Stack.Group>
+          <Stack.Screen
+            name='Alunos'
+            component={Alunos}
+          />
+
+          <Stack.Screen
+            name='Disciplinas'
+            component={Disciplinas}
+          />
+
+          <Stack.Screen
+            name='Historico'
+            component={Historico}
+          />
+
+          <Stack.Screen
+            name='Professores'
+            component={Professores}
+          />
+
+          <Stack.Screen
+            name='Turmas'
+            component={Turmas}
+          />
+
+        </Stack.Group>
+
+      </Stack.Navigator>
+
+    </NavigationContainer>
   )
 }

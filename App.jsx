@@ -9,9 +9,7 @@ export default function App() {
   return (
     <>
       <StatusBar backgroundColor={constants.styles.secondaryColor} barStyle='light-content' />
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
+      <Routes />
     </>
   )
 }
