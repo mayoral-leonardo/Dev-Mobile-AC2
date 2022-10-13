@@ -8,7 +8,7 @@ import Routes from './componentes/Routes/Routes'
 export default function App() {
   return (
     <>
-      <StatusBar backgroundColor={constants.styles.secondaryColor} barStyle='light-content' />
+      <StatusBar barStyle='light-content' />
       <Routes />
     </>
   )
