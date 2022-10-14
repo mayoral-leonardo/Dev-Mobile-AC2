@@ -5,14 +5,14 @@ import { styles } from './styles'
 import { constants } from "../../constants"
 
 export default function Menu() {
-  const screens = ['Alunos', 'Disciplinas', 'Historico', 'Professores', 'Turmas',]
+  const screens = ['Alunos', 'Disciplinas', 'Professores', 'Turmas', 'Historico']
   const navigation = useNavigation()
   const columns = 2
   return (
     <>
       <View style={styles.main}>
         <FlatList
-        key={columns}
+          key={columns}
           data={screens}
           renderItem={({ item }) => (
             <View style={styles.button}>
