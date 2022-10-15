@@ -8,8 +8,17 @@ export default function Disciplinas() {
     <>
       <View style={styles.main}>
         <FormComponent
-          fields={[]}
           type='Disciplinas'
+          fields={[
+            {
+              name: 'nome',
+              placeholder: 'Digite o nome'
+            },
+            {
+              name: 'codigo',
+              placeholder: 'codigo'
+            }
+          ]}
         />
       </View>
     </>

@@ -8,8 +8,17 @@ export default function Alunos() {
     <>
       <View style={styles.main}>
         <FormComponent
-          fields={[]}
           type='Alunos'
+          fields={[
+            {
+              name: 'nome',
+              placeholder: 'Digite o nome'
+            },
+            {
+              name: 'matricula',
+              placeholder: 'Digite a matrícula'
+            }
+          ]}
         />
       </View>
     </>

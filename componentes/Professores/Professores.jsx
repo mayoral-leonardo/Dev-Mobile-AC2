@@ -9,8 +9,17 @@ export default function Professores() {
     <>
       <View style={styles.main}>
       <FormComponent
-          fields={[]}
           type='Professores'
+          fields={[
+            {
+              name: 'nome',
+              placeholder: 'Digite o nome'
+            },
+            {
+              name: 'materia',
+              placeholder: 'Digite a matéria'
+            }
+          ]}
         />
       </View>
     </>

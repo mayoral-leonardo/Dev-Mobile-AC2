@@ -1,14 +1,18 @@
 function createAluno(data) {
-  return 'aluno'
+  console.log(data)
+  console.log('aluno')
 }
 function createDisciplina(data) {
-  return 'disciplina'
+  console.log(data)
+  console.log('disciplina')
 }
 function createProfessor(data) {
-  return 'professor'
+  console.log(data)
+  console.log('professor')
 }
 function createTurma(data) {
-  return 'turma'
+  console.log(data)
+  console.log('turma')
 }
 
 export const firebaseFunctions = {

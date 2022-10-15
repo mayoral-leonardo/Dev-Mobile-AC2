@@ -7,9 +7,18 @@ export default function Turmas() {
   return (
     <>
       <View style={styles.main}>
-      <FormComponent
-          fields={[]}
+        <FormComponent
           type='Turmas'
+          fields={[
+            {
+              name: 'nome',
+              placeholder: 'Digite o nome'
+            },
+            {
+              name: 'codigo',
+              placeholder: 'Digite o codigo'
+            }
+          ]}
         />
       </View>
     </>
