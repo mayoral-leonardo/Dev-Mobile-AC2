@@ -6,7 +6,6 @@ const deviceWidth = Dimensions.get('window').width
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: constants.styles.secondaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },

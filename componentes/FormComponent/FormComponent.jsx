@@ -4,10 +4,10 @@ import { firebaseFunctions } from '../../firebase/firebaseFunctions'
 import { Controller, useForm } from 'react-hook-form'
 import { styles } from './styles'
 import { constants } from '../../constants'
-
-
+import { useTheme } from "../../contexts/theme"
 
 export default function FormComponent({ fields, type }) {
+  const { theme } = useTheme()
   const { control, handleSubmit } = useForm()
   //O get no firebase irá retornar os campos, portanto precisamos apenas armazenar esses campos no useState abaixo
   const [loadedFields, setLoadedFields] = useState()
@@ -37,7 +37,7 @@ export default function FormComponent({ fields, type }) {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, backgroundColor: theme}}>
       {
         fields.map((field) => (
           <Controller

@@ -1,13 +1,16 @@
 import React from "react"
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
+import { useTheme } from "../../contexts/theme"
 
 
 export default function Home() {
+  const { theme, onThemeChange } = useTheme()
+
   return (
     <>
-      <View style={styles.main}>
-        <View style={styles.avatar}>
+      <View style={{...styles.main, backgroundColor: theme.primaryColor}}>
+        <View style={{...styles.avatar, backgroundColor: theme.primaryColor}}>
           <Image
             source={require('../../img/avatar.png')}
             style={{ width: '75%' }}

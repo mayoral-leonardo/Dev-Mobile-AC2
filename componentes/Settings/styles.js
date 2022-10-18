@@ -4,8 +4,12 @@ import { constants } from '../../constants'
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: constants.styles.secondaryColor,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    flex: 1,
+    height: 50,
+    margin: 20
   }
 })

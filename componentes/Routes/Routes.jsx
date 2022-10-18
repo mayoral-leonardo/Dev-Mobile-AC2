@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { Entypo, Feather } from '@expo/vector-icons'
 import { constants } from '../../constants'
+import { useTheme } from '../../contexts/theme'
 
 import Home from '../Home/Home'
 import Menu from '../Menu/Menu'
@@ -19,12 +20,13 @@ const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 function NavigationTab() {
+  const {theme} = useTheme()
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: constants.styles.tertiaryColor,
-        tabBarInactiveTintColor: constants.styles.secondaryColor,
+        tabBarActiveTintColor: theme.tertiaryColor,
+        tabBarInactiveTintColor: theme.secondaryColor,
         tabBarStyle: [
           {
             backgroundColor: '#121212',

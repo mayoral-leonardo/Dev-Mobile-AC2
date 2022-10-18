@@ -4,11 +4,9 @@ import { constants } from '../../constants'
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: constants.styles.primaryColor,
   },
   avatar: {
     flex: 1,
-    backgroundColor: constants.styles.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
