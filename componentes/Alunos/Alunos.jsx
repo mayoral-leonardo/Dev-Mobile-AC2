@@ -9,7 +9,7 @@ export default function Alunos() {
   const { theme } = useTheme()
   return (
     <>
-      <View style={{...styles.main, backgroundColor: theme.primaryColor}}>
+      <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
         <FormComponent
           type='Alunos'
           fields={[

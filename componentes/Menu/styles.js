@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   main: {
     flex: 1,
     paddingVertical: constants.styles.paddingVertical,
-    backgroundColor: constants.styles.secondaryColor,
   },
   button: {
     flex: 1,

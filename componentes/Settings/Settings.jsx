@@ -1,26 +1,26 @@
 import React, { useState } from "react"
-import { View, FlatList, Button } from 'react-native'
+import { View, FlatList, Button, Text } from 'react-native'
 import { styles } from './styles'
 import { constants } from "../../constants"
 import { useTheme } from "../../contexts/theme"
 
-
 export default function Settings() {
   const { theme, onThemeChange } = useTheme()
 
-  const themeOptions = ['green', 'purple', 'red']
+  const themeOptions = ['red', 'green', 'blue', ]
 
   const translateColors = (color) => {
     switch (color) {
       case 'green': return 'Verde'
-      case 'purple': return 'Roxo'
+      case 'blue': return 'Azul'
       case 'red': return 'Vermelho'
     }
   }
 
   return (
     <>
-      <View style={{...styles.main, backgroundColor: theme.primaryColor}}>
+      <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
+        <Text>Selecione um tema para o aplicativo:</Text>
         <FlatList
           key={1}
           data={themeOptions}

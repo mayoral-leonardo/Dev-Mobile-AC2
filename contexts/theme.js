@@ -1,22 +1,25 @@
-import React, {createContext, useContext, useState} from 'react'
-import { greenTheme, redTheme, purpleTheme } from '../constants'
+import React, { createContext, useContext, useState } from 'react'
+import { greenTheme, redTheme, blueTheme } from '../constants'
 
 const ThemeContext = createContext()
 
-export const ThemeProvider = ({children}) => {
-  const [theme, setTheme] = useState('red')
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState({ ...blueTheme })
 
-  function onThemeChange (theme) {
+  function onThemeChange(theme) {
     switch (theme) {
-      case 'green': return setTheme({...greenTheme})
-      case 'red': return setTheme({...redTheme})
-      case 'purple': return setTheme({...purpleTheme})
+      case 'red':
+        return setTheme({ ...redTheme })
+      case 'green':
+        return setTheme({ ...greenTheme })
+      case 'blue':
+      default:
+        return setTheme({ ...blueTheme })
     }
-    setTheme(theme)
   }
 
   return (
-    <ThemeContext.Provider value={{theme: theme, onThemeChange}}>
+    <ThemeContext.Provider value={{ theme: theme, onThemeChange }}>
       {children}
     </ThemeContext.Provider>
   )
@@ -24,5 +27,5 @@ export const ThemeProvider = ({children}) => {
 
 export const useTheme = () => {
   const context = useContext(ThemeContext)
-  return context 
+  return context
 }

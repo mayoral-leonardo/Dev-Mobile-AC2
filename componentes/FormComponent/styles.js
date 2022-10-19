@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
     fontSize: 16
   },
   button: {
-    backgroundColor: constants.styles.primaryColor,
     width: deviceWidth / 2,
     borderRadius: 10,
     paddingVertical: 8,
