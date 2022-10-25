@@ -32,10 +32,6 @@ export default function FormComponent({ fields, type }) {
     }
   }
 
-  useEffect(() => {
-
-  }, [])
-
   return (
     <View style={{...styles.container, backgroundColor: theme.secondaryColor}}>
       {
