@@ -3,7 +3,7 @@ import { View, Image, Text, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 
-export default function StudentCard({ name, register }) {
+export default function StudentCard({ name, register, reload }) {
   const { theme } = useTheme()
   const [image, setImage] = useState()
   const [loading, setLoading] = useState(false)
@@ -25,7 +25,7 @@ export default function StudentCard({ name, register }) {
         })
     }
     getImage()
-  }, [])
+  }, [reload])
 
   return (
     <View style={{ ...styles.card, backgroundColor: theme.secondaryColor }}>
