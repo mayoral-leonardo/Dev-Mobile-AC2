@@ -29,15 +29,17 @@ export default function StudentCard({ name, register }) {
 
   return (
     <View style={{ ...styles.card, backgroundColor: theme.secondaryColor }}>
-      {loading
-        ? <View style={{ position: "relative", top: '30%' }}>
-          <ActivityIndicator size={"large"} />
-        </View>
-        : <Image
-          source={!error && image && image[0].image_link ? { uri: image[0].image_link } : require('../../img/avatar.png')}
-          style={styles.avatar}
-          resizeMode='contain'
-        />}
+      {
+        loading
+          ? <View style={{ position: "relative", top: '30%' }}>
+            <ActivityIndicator size={"large"} />
+          </View>
+          : <Image
+            source={!error && image && image[0].image_link ? { uri: image[0].image_link } : require('../../img/avatar.png')}
+            style={styles.avatar}
+            resizeMode='contain'
+          />
+      }
       <View style={styles.name}>
         <Text style={{ ...styles.text, color: theme.textColor }}>{name}</Text>
         <Text style={{ ...styles.text, color: theme.textColor }}>{register}</Text>

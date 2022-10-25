@@ -6,7 +6,7 @@ import { useTheme } from "../../contexts/theme"
 export default function Settings() {
   const { theme, onThemeChange } = useTheme()
 
-  const themeOptions = ['red', 'green', 'blue', ]
+  const themeOptions = ['red', 'green', 'blue',]
 
   const translateColors = (color) => {
     switch (color) {
@@ -18,23 +18,25 @@ export default function Settings() {
 
   return (
     <>
-      <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
-        <Text>Selecione um tema para o aplicativo:</Text>
-        <FlatList
-          key={1}
-          data={themeOptions}
-          renderItem={({ item }) => (
-            <View style={styles.button}>
-              <Button
-                color={item}
-                key={item}
-                title={translateColors(item)}
-                onPress={() => onThemeChange(item)}
-              />
-            </View>
-          )}
-          numColumns={1}
-        />
+      <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
+        <View style={styles.card}>
+          <Text style={{fontSize: 16}}>Selecione um tema para o aplicativo:</Text>
+          <FlatList
+            key={1}
+            data={themeOptions}
+            renderItem={({ item }) => (
+              <View style={styles.button}>
+                <Button
+                  color={item}
+                  key={item}
+                  title={translateColors(item)}
+                  onPress={() => onThemeChange(item)}
+                />
+              </View>
+            )}
+            numColumns={1}
+          />
+        </View>
       </View>
     </>
   )
