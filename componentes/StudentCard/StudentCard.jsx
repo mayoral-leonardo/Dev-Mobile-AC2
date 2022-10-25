@@ -30,7 +30,7 @@ export default function StudentCard({ name, register }) {
   return (
     <View style={{ ...styles.card, backgroundColor: theme.secondaryColor }}>
       {loading
-        ? <View style={{position: "relative", top: '30%'}}>
+        ? <View style={{ position: "relative", top: '30%' }}>
           <ActivityIndicator size={"large"} />
         </View>
         : <Image
