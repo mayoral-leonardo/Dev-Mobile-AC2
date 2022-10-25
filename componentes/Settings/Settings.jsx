@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { View, FlatList, Button, Text } from 'react-native'
 import { styles } from './styles'
-import { constants } from "../../constants"
 import { useTheme } from "../../contexts/theme"
 
 export default function Settings() {

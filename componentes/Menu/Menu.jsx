@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native"
 import React from "react"
 import { View, FlatList, Button } from 'react-native'
 import { styles } from './styles'
-import { constants } from "../../constants"
 import { useTheme } from "../../contexts/theme"
 
 export default function Menu() {

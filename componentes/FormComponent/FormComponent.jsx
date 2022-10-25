@@ -3,7 +3,6 @@ import { View, TextInput, Button } from 'react-native'
 import { firebaseFunctions } from '../../firebase/firebaseFunctions'
 import { Controller, useForm } from 'react-hook-form'
 import { styles } from './styles'
-import { constants } from '../../constants'
 import { useTheme } from "../../contexts/theme"
 
 export default function FormComponent({ fields, type }) {

@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import { constants } from '../../constants'
 
 const deviceWidth = Dimensions.get('window').width
 

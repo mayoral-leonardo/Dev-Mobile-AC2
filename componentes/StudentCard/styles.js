@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { constants } from '../../constants'
 
 export const styles = StyleSheet.create({
   card: {
@@ -21,7 +20,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '75%',
-    height: '75%'
+    height: '75%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+
   },
   name: {
     width: '100%',
