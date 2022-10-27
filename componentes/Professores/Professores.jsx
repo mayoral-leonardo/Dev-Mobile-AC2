@@ -14,12 +14,20 @@ export default function Professores() {
           type='Professores'
           fields={[
             {
-              name: 'nome',
-              placeholder: 'Digite o nome'
+              name: 'cod_prof',
+              placeholder: 'Digite o código do professor'
             },
             {
-              name: 'materia',
-              placeholder: 'Digite a matéria'
+              name: 'nome',
+              placeholder: 'Digite o nome do professor'
+            },
+            {
+              name: 'endereco',
+              placeholder: 'Digite o endereço'
+            },
+            {
+              name: 'cidade',
+              placeholder: 'Digite a cidade'
             }
           ]}
         />

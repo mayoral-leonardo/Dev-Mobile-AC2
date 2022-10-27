@@ -1,7 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
-const deviceWidth = Dimensions.get('window').width
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -14,17 +12,16 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     height: 40,
-    width: deviceWidth / 2,
+    minWidth: '80%',
     marginBottom: 12,
-    fontSize: 16
+    fontSize: 16,
+    padding: 5
   },
   button: {
-    width: deviceWidth / 2,
+    minWidth: '50%',
     borderRadius: 10,
     paddingVertical: 8,
-    marginTop: 40,
+    marginTop: 10,
     justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center'
   },
 })

@@ -32,7 +32,7 @@ export default function FormComponent({ fields, type }) {
   }
 
   return (
-    <View style={{...styles.container, backgroundColor: theme.secondaryColor}}>
+    <View style={{ ...styles.container, backgroundColor: theme.secondaryColor }}>
       {
         fields.map((field) => (
           <Controller
@@ -52,11 +52,13 @@ export default function FormComponent({ fields, type }) {
           />
         ))
       }
-      <Button
-        color={theme.primaryColor}
-        title='Enviar'
-        onPress={handleSubmit(onSubmit)}
-      />
+      <View style={styles.button}>
+        <Button
+          color={theme.primaryColor}
+          title='Enviar'
+          onPress={handleSubmit(onSubmit)}
+        />
+      </View>
     </View>
   )
 }

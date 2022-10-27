@@ -14,12 +14,24 @@ export default function Alunos() {
           type='Alunos'
           fields={[
             {
+              name: 'matricula',
+              placeholder: 'Digite a matrícula'
+            },
+            {
               name: 'nome',
               placeholder: 'Digite o nome'
             },
             {
-              name: 'matricula',
-              placeholder: 'Digite a matrícula'
+              name: 'endereco',
+              placeholder: 'Digite o endereço'
+            },
+            {
+              name: 'cidade',
+              placeholder: 'Digite a cidade'
+            },
+            {
+              name: 'foto',
+              placeholder: 'Insira a foto'
             }
           ]}
         />

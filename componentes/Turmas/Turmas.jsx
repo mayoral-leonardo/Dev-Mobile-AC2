@@ -13,12 +13,24 @@ export default function Turmas() {
           type='Turmas'
           fields={[
             {
-              name: 'nome',
-              placeholder: 'Digite o nome'
+              name: 'cod_turma',
+              placeholder: 'Digite o código da turma'
             },
             {
-              name: 'codigo',
-              placeholder: 'Digite o codigo'
+              name: 'cod_disc',
+              placeholder: 'Digite o código da disciplina'
+            },
+            {
+              name: 'cod_prof',
+              placeholder: 'Digite o código do professor'
+            },
+            {
+              name: 'ano',
+              placeholder: 'Digite o ano'
+            },
+            {
+              name: 'horario',
+              placeholder: 'Digite o horário'
             }
           ]}
         />

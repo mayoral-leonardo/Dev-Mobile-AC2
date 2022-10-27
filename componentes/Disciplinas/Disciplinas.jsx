@@ -13,12 +13,16 @@ export default function Disciplinas() {
           type='Disciplinas'
           fields={[
             {
-              name: 'nome',
-              placeholder: 'Digite o nome'
+              name: 'cod_disc',
+              placeholder: 'Digite o código da disciplina'
             },
             {
-              name: 'codigo',
-              placeholder: 'codigo'
+              name: 'nome_disc',
+              placeholder: 'Digite o nome da disciplina'
+            },
+            {
+              name: 'carga_hor',
+              placeholder: 'Digite a carga horária da disciplina'
             }
           ]}
         />
