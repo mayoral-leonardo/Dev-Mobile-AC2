@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
+    backgroundColor: '#FFFFFF',
     height: 40,
     minWidth: '80%',
     marginBottom: 12,
