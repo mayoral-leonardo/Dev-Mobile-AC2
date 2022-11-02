@@ -42,7 +42,7 @@ export default function Alunos() {
                 onPress={() => navigation.navigate('Registrar Aluno')}
               />
             </View>
-            <View style={{ paddingVertical: 20 }}>
+            <View style={styles.flatlist}>
               <FlatList
                 data={alunos}
                 renderItem={({ item }) => (

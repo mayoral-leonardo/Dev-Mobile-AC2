@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
   text: {
     alignSelf: 'flex-start'
   },
+  flatlist: {
+    paddingVertical: 20,
+  },
   card: {
     flexDirection: 'column',
     justifyContent: 'center',

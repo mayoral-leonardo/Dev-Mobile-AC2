@@ -3,14 +3,18 @@ import { View } from 'react-native'
 import { styles } from './styles'
 import FormComponent from "../FormComponent/FormComponent"
 import { useTheme } from "../../contexts/theme"
+import { useNavigation } from "@react-navigation/native"
 
 export default function TurmaRegister() {
   const {theme} = useTheme()
+  const navigation = useNavigation()
+
   return (
     <>
       <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
         <FormComponent
           type='Turmas'
+          onSuccess={() => navigation.navigate('Turmas')}
           fields={[
             {
               name: 'cod_turma',

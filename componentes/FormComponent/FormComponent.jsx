@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { View, TextInput, Button } from 'react-native'
 import { firebaseFunctions } from '../../firebase/firebaseFunctions'
 import { Controller, useForm } from 'react-hook-form'
@@ -11,20 +11,22 @@ export default function FormComponent({ fields, type, onSuccess }) {
   //O get no firebase irá retornar os campos, portanto precisamos apenas armazenar esses campos no useState abaixo
   const [loadedFields, setLoadedFields] = useState()
 
-
   function onSubmit(data) {
     switch (type) {
       case 'Alunos':
         return firebaseFunctions.createAluno(data, onSuccess)
 
       case 'Disciplinas':
-        return firebaseFunctions.createDisciplina(data)
+        return firebaseFunctions.createDisciplina(data, onSuccess)
 
+      case 'Historico':
+        return firebaseFunctions.createHistorico(data, onSuccess)
+        
       case 'Professores':
-        return firebaseFunctions.createProfessor(data)
+        return firebaseFunctions.createProfessor(data, onSuccess)
 
       case 'Turmas':
-        return firebaseFunctions.createTurma(data)
+        return firebaseFunctions.createTurma(data, onSuccess)
 
       default:
         return null

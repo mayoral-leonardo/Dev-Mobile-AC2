@@ -5,14 +5,21 @@ import db from './firebaseConfig'
 function createAluno(data, onSuccess) {
   addDoc(collection(db, "Alunos"), data).then(() => onSuccess())
 }
-function createDisciplina(data) {
-  addDoc(collection(db, "Disciplinas"), data)
+
+function createDisciplina(data, onSuccess) {
+  addDoc(collection(db, "Disciplinas"), data).then(() => onSuccess())
 }
-function createProfessor(data) {
-  addDoc(collection(db, "Professores"), data)
+
+function createProfessor(data, onSuccess) {
+  addDoc(collection(db, "Professores"), data).then(() => onSuccess())
 }
-function createTurma(data) {
-  addDoc(collection(db, "Turmas"), data)
+
+function createHistorico(data, onSuccess) {
+  addDoc(collection(db, "Historico"), data).then(() => onSuccess())
+}
+
+function createTurma(data, onSuccess) {
+  addDoc(collection(db, "Turmas"), data).then(() => onSuccess())
 }
 
 // Get functions
@@ -46,6 +53,7 @@ async function getTurmas() {
 export const firebaseFunctions = {
   createAluno,
   createDisciplina,
+  createHistorico,
   createProfessor,
   createTurma,
   getAlunos,
