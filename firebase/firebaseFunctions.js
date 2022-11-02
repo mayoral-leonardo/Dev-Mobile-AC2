@@ -1,5 +1,5 @@
-import {getFirestore, collection, getDocs, doc} from 'firebase/firestore'
-import db from './src/firebase/firebaseConfig.js'
+import {getFirestore, collection, getDocs, doc, addDoc} from 'firebase/firestore'
+import db from './firebaseConfig'
 
 function createAluno(data) {
   addDoc(collection(db, "Alunos"),data);
