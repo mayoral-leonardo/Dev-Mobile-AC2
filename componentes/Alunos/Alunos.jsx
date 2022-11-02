@@ -1,5 +1,6 @@
 import React from "react"
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import { useNavigation } from "@react-navigation/native"
+import { View, Button } from 'react-native'
 import { styles } from './styles'
 import FormComponent from "../FormComponent/FormComponent"
 
@@ -7,33 +8,14 @@ import { useTheme } from "../../contexts/theme"
 
 export default function Alunos() {
   const { theme } = useTheme()
+  const navigation = useNavigation()
+
   return (
     <>
-      <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
-        <FormComponent
-          type='Alunos'
-          fields={[
-            {
-              name: 'matricula',
-              placeholder: 'Digite a matrícula'
-            },
-            {
-              name: 'nome',
-              placeholder: 'Digite o nome'
-            },
-            {
-              name: 'endereco',
-              placeholder: 'Digite o endereço'
-            },
-            {
-              name: 'cidade',
-              placeholder: 'Digite a cidade'
-            },
-            {
-              name: 'foto',
-              placeholder: 'Insira a foto'
-            }
-          ]}
+      <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
+        <Button
+          title='Registrar Aluno'
+          onPress={() => navigation.navigate('Registrar Aluno')}
         />
       </View>
     </>
