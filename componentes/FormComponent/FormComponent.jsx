@@ -5,7 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 
-export default function FormComponent({ fields, type }) {
+export default function FormComponent({ fields, type, onSuccess }) {
   const { theme } = useTheme()
   const { control, handleSubmit } = useForm()
   //O get no firebase irá retornar os campos, portanto precisamos apenas armazenar esses campos no useState abaixo
@@ -15,7 +15,7 @@ export default function FormComponent({ fields, type }) {
   function onSubmit(data) {
     switch (type) {
       case 'Alunos':
-        return firebaseFunctions.createAluno(data)
+        return firebaseFunctions.createAluno(data, onSuccess)
 
       case 'Disciplinas':
         return firebaseFunctions.createDisciplina(data)

@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     paddingHorizontal: 20,
     paddingVertical: 20
-
   },
   button: {
     flex: 1,

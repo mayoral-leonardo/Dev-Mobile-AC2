@@ -32,7 +32,7 @@ export default function StudentCard({ name, register, reload }) {
       {
         loading
           ? <View style={{ position: "relative", top: '30%' }}>
-            <ActivityIndicator size={"large"} />
+            <ActivityIndicator size={"large"} color={theme.primaryColor}/>
           </View>
           : <Image
             source={!error && image && image[0].image_link ? { uri: image[0].image_link } : require('../../img/avatar.png')}
