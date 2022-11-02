@@ -29,7 +29,7 @@ async function getHistoricos() {
   const querySnapshot = await getDocs(collection(db, 'Historicos'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ id: doc.id, ...doc.data() })
+    allData.push({ ...doc.data() })
   });
   if (allData.length) return allData
 }
@@ -38,7 +38,7 @@ async function getTurmas() {
   const querySnapshot = await getDocs(collection(db, 'Turmas'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ id: doc.id, ...doc.data() })
+    allData.push({ ...doc.data() })
   });
   if (allData.length) return allData
 }
