@@ -1,18 +1,22 @@
+import {getFirestore, collection, getDocs, doc} from 'firebase/firestore'
+import db from './src/firebase/firebaseConfig.js'
+
 function createAluno(data) {
-  console.log(data)
-  console.log('aluno')
+  addDoc(collection(db, "Alunos"),data);
 }
 function createDisciplina(data) {
-  console.log(data)
-  console.log('disciplina')
+  addDoc(collection(db, "Disciplinas"),data);
 }
 function createProfessor(data) {
-  console.log(data)
-  console.log('professor')
+  addDoc(collection(db, "Professores"),data);
 }
 function createTurma(data) {
-  console.log(data)
-  console.log('turma')
+  addDoc(collection(db, "Turmas"),data);
+}
+
+function getAllAluno(setAlunos){
+  if (setAlunos) setAlunos()
+
 }
 
 export const firebaseFunctions = {
