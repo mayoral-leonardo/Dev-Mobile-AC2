@@ -34,7 +34,8 @@ export default function Alunos() {
       <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
-          : <>
+          : alunos.length 
+          ? <>
             <View style={styles.button}>
               <Button
                 color={theme.primaryColor}
@@ -55,6 +56,7 @@ export default function Alunos() {
               />
             </View>
           </>
+          : <Text style={{alignSelf: 'center'}}>Não há dados!</Text>
         }
       </View>
     </>

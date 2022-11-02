@@ -12,13 +12,16 @@ export const styles = StyleSheet.create({
   button: {
     marginTop: 40,
     width: '50%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    position: 'absolute',
+    top: 0
   },
   text: {
     alignSelf: 'flex-start'
   },
   flatlist: {
-    paddingVertical: 20,
+    paddingVertical: 40,
+    top: 60
   },
   card: {
     flexDirection: 'column',
@@ -31,7 +34,7 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    marginTop: 20,
+    marginBottom: 20,
     paddingHorizontal: 20,
     paddingVertical: 20
   },
