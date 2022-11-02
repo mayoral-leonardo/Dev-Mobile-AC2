@@ -50,6 +50,15 @@ async function getHistoricos() {
   if (allData.length) return allData
 }
 
+async function getProfessores() {
+  const querySnapshot = await getDocs(collection(db, 'Professores'))
+  const allData = []
+  querySnapshot.forEach((doc) => {
+    allData.push({ ...doc.data() })
+  })
+  if (allData.length) return allData
+}
+
 async function getTurmas() {
   const querySnapshot = await getDocs(collection(db, 'Turmas'))
   const allData = []
@@ -68,5 +77,6 @@ export const firebaseFunctions = {
   getAlunos,
   getDisciplinas,
   getHistoricos,
+  getProfessores,
   getTurmas
 }
