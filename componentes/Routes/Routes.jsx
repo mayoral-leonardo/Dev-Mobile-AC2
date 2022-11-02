@@ -14,12 +14,17 @@ import Disciplinas from '../Disciplinas/Disciplinas'
 import Historico from '../Historico/Historico'
 import Professores from '../Professores/Professores'
 import Turmas from '../Turmas/Turmas'
+import AlunoRegister from '../Alunos/AlunoRegister'
+import DisciplinaRegister from '../Disciplinas/DisciplinaRegister'
+import ProfessorRegister from '../Professores/ProfessorRegister'
+import TurmaRegister from '../Turmas/TurmaRegister'
+import HistoricoRegister from '../Historico/HistoricoRegister'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 function NavigationTab() {
-  const {theme} = useTheme()
+  const { theme } = useTheme()
   return (
     <Tab.Navigator
       screenOptions={{
@@ -79,17 +84,19 @@ export default function Routes() {
         <Stack.Screen
           name='main'
           component={NavigationTab}
-          options={{
-            headerShown: false
-          }
-          }
+          options={{ headerShown: false }}
         />
 
         <Stack.Group>
-          
+
           <Stack.Screen
             name='Alunos'
             component={Alunos}
+
+          />
+          <Stack.Screen
+            name='Registrar Aluno'
+            component={AlunoRegister}
           />
 
           <Stack.Screen
@@ -98,8 +105,18 @@ export default function Routes() {
           />
 
           <Stack.Screen
+            name='Registrar Disciplina'
+            component={DisciplinaRegister}
+          />
+
+          <Stack.Screen
             name='Historico'
             component={Historico}
+          />
+
+          <Stack.Screen
+            name='Registrar Historico'
+            component={HistoricoRegister}
           />
 
           <Stack.Screen
@@ -108,8 +125,18 @@ export default function Routes() {
           />
 
           <Stack.Screen
+            name='Registrar Professor'
+            component={ProfessorRegister}
+          />
+
+          <Stack.Screen
             name='Turmas'
             component={Turmas}
+          />
+
+          <Stack.Screen
+            name='Registrar Turma'
+            component={TurmaRegister}
           />
 
         </Stack.Group>
