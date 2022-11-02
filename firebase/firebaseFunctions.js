@@ -14,10 +14,10 @@ function createTurma(data) {
   addDoc(collection(db, "Turmas"),data);
 }
 
-function getAllAluno(setAlunos){
+/*function getAllAluno(setAlunos){
   if (setAlunos) setAlunos()
 
-}
+}*/
 
 export const firebaseFunctions = {
   createAluno,
