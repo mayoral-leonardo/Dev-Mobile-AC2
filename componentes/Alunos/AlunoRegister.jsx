@@ -2,16 +2,19 @@ import React from "react"
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import FormComponent from "../FormComponent/FormComponent"
-
 import { useTheme } from "../../contexts/theme"
+import { useNavigation } from "@react-navigation/native"
 
 export default function AlunoRegister() {
   const { theme } = useTheme()
+  const navigation = useNavigation()
+
   return (
     <>
       <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
         <FormComponent
           type='Alunos'
+          onSuccess={() => navigation.navigate('Alunos')}
           fields={[
             {
               name: 'matricula',
