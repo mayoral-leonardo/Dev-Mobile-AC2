@@ -21,7 +21,7 @@ async function getAlunos() {
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ id: doc.id, ...doc.data() })
-  });
+  })
   if (allData.length) return allData
 }
 
@@ -30,7 +30,7 @@ async function getHistoricos() {
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
-  });
+  })
   if (allData.length) return allData
 }
 
@@ -39,7 +39,7 @@ async function getTurmas() {
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
-  });
+  })
   if (allData.length) return allData
 }
 
