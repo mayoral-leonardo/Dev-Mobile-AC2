@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { View, Button, FlatList, Text, ActivityIndicator } from 'react-native'
+import { View, FlatList, Text, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../../contexts/theme"
 import { firebaseFunctions } from "../../../firebase/firebaseFunctions"
 
-export default function TurmaDetails({ route }) {
-  const { turmaId } = route.params
+export default function AlunoDetails({ route }) {
+  const { alunoId } = route.params
   const [update, setUpdate] = useState()
   const [loading, setLoading] = useState()
-  const [alunos, setAlunos] = useState([])
+  const [information, setInformation] = useState([])
   const { theme } = useTheme()
   const navigation = useNavigation()
 
   useEffect(() => {
-    async function getAllAlunosFromTurma() {
+    async function getAlunoInformation() {
       setLoading(true)
       try {
-        const response = await firebaseFunctions.getAlunosFromSpecificTurma(turmaId)
-        if (response) setAlunos(response)
+        const response = await firebaseFunctions.getAllAlunoInformation(alunoId)
+        if (response) setInformation(response)
         setLoading(false)
 
       } catch (error) {
@@ -26,7 +26,7 @@ export default function TurmaDetails({ route }) {
         setLoading(false)
       }
     }
-    getAllAlunosFromTurma()
+    getAlunoInformation()
     navigation.addListener('focus', () => setUpdate(!update))
   }, [update, navigation])
 
@@ -35,20 +35,16 @@ export default function TurmaDetails({ route }) {
       <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
-          : alunos.length
+          : information.length
             ? <>
               <View style={styles.flatlist}>
                 <FlatList
-                  data={alunos}
+                  data={information}
                   renderItem={({ item }) => (
                     <View style={styles.card}>
                       <Text style={styles.text}>Nome: {item.nome}</Text>
                       <Text style={styles.text}>Matrícula: {item.matricula}</Text>
                       <Text style={styles.text}>Cidade: {item.cidade}</Text>
-                      <Button
-                        title='Detalhes'
-                        onPress={() => navigation.navigate('Detalhes do Aluno', { alunoId: item.id })}
-                      />
                     </View>
                   )}
                 />

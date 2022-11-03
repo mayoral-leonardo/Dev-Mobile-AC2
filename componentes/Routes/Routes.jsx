@@ -20,6 +20,7 @@ import ProfessorRegister from '../Professores/ProfessorRegister'
 import TurmaRegister from '../Turmas/TurmaRegister'
 import HistoricoRegister from '../Historico/HistoricoRegister'
 import TurmaDetails from '../Turmas/TurmaDetails/TurmaDetails'
+import AlunoDetails from '../Alunos/AlunoDetails/AlunoDetails'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -93,8 +94,13 @@ export default function Routes() {
           <Stack.Screen
             name='Alunos'
             component={Alunos}
-
           />
+
+          <Stack.Screen
+            name='Detalhes do Aluno'
+            component={AlunoDetails}
+          />
+
           <Stack.Screen
             name='Registrar Aluno'
             component={AlunoRegister}
