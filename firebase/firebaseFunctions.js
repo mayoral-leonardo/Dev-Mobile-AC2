@@ -19,6 +19,7 @@ function createHistorico(data, onSuccess) {
 }
 
 function createTurma(data, onSuccess) {
+  console.log(data)
   addDoc(collection(db, "Turmas"), data).then(() => onSuccess())
 }
 
