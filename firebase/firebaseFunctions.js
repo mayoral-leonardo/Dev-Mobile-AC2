@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc,updateDoc,deleteDoc } from 'firebase/firestore'
 import db from './firebaseConfig'
 
 // Create functions
@@ -76,6 +76,22 @@ async function getAllAlunoInformation(alunoId) {
   await console.log(alunoId)
 }
 
+async function updateHistorico(data) {
+  const docRef = doc(db, "Historico", data.docId);
+
+  newData = {
+    frequencia:data.frequencia,
+    nota: data.nota
+  }
+
+  updateDoc(docRef, newData)
+}
+
+async function deleteHistorico(docId) {
+  deleteDoc(doc(db, "Historico", docId));
+}
+
+
 export const firebaseFunctions = {
   createAluno,
   createDisciplina,
@@ -88,5 +104,7 @@ export const firebaseFunctions = {
   getProfessores,
   getTurmas,
   getAlunosFromSpecificTurma,
-  getAllAlunoInformation
+  getAllAlunoInformation,
+  updateHistorico,
+  deleteHistorico
 }
