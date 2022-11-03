@@ -77,7 +77,9 @@ export default function TurmaRegister() {
               selectedValue={codigoDisciplina}
               onValueChange={(itemValue, itemIndex) =>
                 setCodigoDisciplina(itemValue)
-              }>
+              }
+            >
+              <Picker.Item label={'Selecione'} value={''} />
               {disciplinas.map((disciplina) => (
                 <Picker.Item key={disciplina.cod_disc} label={disciplina.nome_disc} value={disciplina.cod_disc} />
               ))}
@@ -89,7 +91,9 @@ export default function TurmaRegister() {
               selectedValue={codigoProfessor}
               onValueChange={(itemValue, itemIndex) =>
                 setCodigoProfessor(itemValue)
-              }>
+              }
+            >
+              <Picker.Item label={'Selecione'} value={''} />
               {professores.map((professor) => (
                 <Picker.Item key={professor.cod_prof} label={professor.nome} value={professor.cod_prof} />
               ))}
