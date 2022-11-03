@@ -3,15 +3,15 @@ import db from './firebaseConfig'
 
 // Create functions
 function createAluno(data, onSuccess) {
-  addDoc(collection(db, "Alunos"), data).then(() => onSuccess())
+  addDoc(collection(db, "Aluno"), data).then(() => onSuccess())
 }
 
 function createDisciplina(data, onSuccess) {
-  addDoc(collection(db, "Disciplinas"), data).then(() => onSuccess())
+  addDoc(collection(db, "Disciplina"), data).then(() => onSuccess())
 }
 
 function createProfessor(data, onSuccess) {
-  addDoc(collection(db, "Professores"), data).then(() => onSuccess())
+  addDoc(collection(db, "Professor"), data).then(() => onSuccess())
 }
 
 function createHistorico(data, onSuccess) {
@@ -19,12 +19,12 @@ function createHistorico(data, onSuccess) {
 }
 
 function createTurma(data, onSuccess) {
-  addDoc(collection(db, "Turmas"), data).then(() => onSuccess())
+  addDoc(collection(db, "Turma"), data).then(() => onSuccess())
 }
 
 // Get functions
 async function getAlunos() {
-  const querySnapshot = await getDocs(collection(db, 'Alunos'))
+  const querySnapshot = await getDocs(collection(db, 'Aluno'))
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ id: doc.id, ...doc.data() })
@@ -33,7 +33,7 @@ async function getAlunos() {
 }
 
 async function getDisciplinas() {
-  const querySnapshot = await getDocs(collection(db, 'Disciplinas'))
+  const querySnapshot = await getDocs(collection(db, 'Disciplina'))
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
@@ -42,7 +42,7 @@ async function getDisciplinas() {
 }
 
 async function getHistoricos() {
-  const querySnapshot = await getDocs(collection(db, 'Historicos'))
+  const querySnapshot = await getDocs(collection(db, 'Historico'))
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
@@ -51,7 +51,7 @@ async function getHistoricos() {
 }
 
 async function getProfessores() {
-  const querySnapshot = await getDocs(collection(db, 'Professores'))
+  const querySnapshot = await getDocs(collection(db, 'Professor'))
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
@@ -60,7 +60,7 @@ async function getProfessores() {
 }
 
 async function getTurmas() {
-  const querySnapshot = await getDocs(collection(db, 'Turmas'))
+  const querySnapshot = await getDocs(collection(db, 'Turma'))
   const allData = []
   querySnapshot.forEach((doc) => {
     allData.push({ ...doc.data() })
