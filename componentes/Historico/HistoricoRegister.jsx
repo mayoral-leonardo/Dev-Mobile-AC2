@@ -6,7 +6,9 @@ import { useNavigation } from "@react-navigation/native"
 import { Picker } from '@react-native-picker/picker'
 import { firebaseFunctions } from "../../firebase/firebaseFunctions"
 
-export default function HistoricoRegister() {
+export default function HistoricoRegister({ route }) {
+  const { historico } = route.params
+  const isEdit = Boolean(historico)
   const { theme } = useTheme()
   const navigation = useNavigation()
 
@@ -34,6 +36,13 @@ export default function HistoricoRegister() {
 
     firebaseFunctions.createHistorico(data, () => navigation.navigate('Historico'))
   }
+
+  useEffect(() => {
+    if (isEdit) {
+      setFrequencia(historico.frequencia)
+      setNota(historico.nota)
+    }
+  }, [isEdit])
 
   useEffect(() => {
     async function getAlunosFromDatabase() {
@@ -72,43 +81,45 @@ export default function HistoricoRegister() {
       <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
         {!loadingAlunos && !loadingTurmas
           ? <>
-            <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Aluno:</Text>
-            <Picker
-              style={styles.input}
-              selectedValue={codigoMatricula}
-              onValueChange={(itemValue, itemIndex) =>
-                setCodigoMatricula(itemValue)
-              }
-            >
-              <Picker.Item label={'Selecione'} value={''} />
-              {alunos.map((aluno) => (
-                <Picker.Item key={aluno.matricula} label={`${aluno.nome} - ${aluno.matricula}`} value={aluno.matricula} />
-              ))}
-            </Picker>
+            {!isEdit &&
+              <>
+                <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Aluno:</Text>
+                <Picker
+                  style={styles.input}
+                  selectedValue={codigoMatricula}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setCodigoMatricula(itemValue)
+                  }
+                >
+                  <Picker.Item label={'Selecione'} value={''} />
+                  {alunos.map((aluno) => (
+                    <Picker.Item key={aluno.matricula} label={`${aluno.nome} - ${aluno.matricula}`} value={aluno.matricula} />
+                  ))}
+                </Picker>
 
-            <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Turma:</Text>
-            <Picker
-              style={styles.input}
-              selectedValue={codigoTurma}
-              onValueChange={(itemValue, itemIndex) =>
-                setCodigoTurma(itemValue)
-              }
-            >
-              <Picker.Item label={'Selecione'} value={''} />
-              {turmas.map((turma) => (
-                <Picker.Item key={turma.cod_turma} label={turma.cod_turma} value={turma.cod_turma} />
-              ))}
-            </Picker>
+                <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Turma:</Text>
+                <Picker
+                  style={styles.input}
+                  selectedValue={codigoTurma}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setCodigoTurma(itemValue)
+                  }
+                >
+                  <Picker.Item label={'Selecione'} value={''} />
+                  {turmas.map((turma) => (
+                    <Picker.Item key={turma.cod_turma} label={turma.cod_turma} value={turma.cod_turma} />
+                  ))}
+                </Picker>
 
-            <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Código do Histórico:</Text>
-            <TextInput
-              placeholder={'cod_historico'}
-              autoCapitalize='none'
-              style={styles.input}
-              value={codigoHistorico}
-              onChangeText={(value) => setCodigoHistorico(value)}
-            />
-
+                <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Código do Histórico:</Text>
+                <TextInput
+                  placeholder={'cod_historico'}
+                  autoCapitalize='none'
+                  style={styles.input}
+                  value={codigoHistorico}
+                  onChangeText={(value) => setCodigoHistorico(value)}
+                />
+              </>}
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Frequência:</Text>
             <TextInput

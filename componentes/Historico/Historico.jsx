@@ -36,8 +36,8 @@ export default function Historico() {
           <Button
             color={theme.primaryColor}
             title='Registrar Histórico'
-            onPress={() => navigation.navigate('Registrar Historico')}
-            />
+            onPress={() => navigation.navigate('Registrar Historico', {historico: null})}
+          />
         </View>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
@@ -50,6 +50,11 @@ export default function Historico() {
                     <View style={styles.card}>
                       <Text style={styles.text}>Aluno: {item.matricula}</Text>
                       <Text style={styles.text}>Turma: {item.cod_turma}</Text>
+                      <Button
+                        color={theme.primaryColor}
+                        title='Editar'
+                        onPress={() => navigation.navigate('Registrar Historico', { historico: {...item} })}
+                      />
                     </View>
                   )}
                 />
