@@ -32,31 +32,31 @@ export default function Alunos() {
   return (
     <>
       <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
+        <View style={styles.button}>
+          <Button
+            color={theme.primaryColor}
+            title='Registrar Aluno'
+            onPress={() => navigation.navigate('Registrar Aluno')}
+          />
+        </View>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
-          : alunos.length 
-          ? <>
-            <View style={styles.button}>
-              <Button
-                color={theme.primaryColor}
-                title='Registrar Aluno'
-                onPress={() => navigation.navigate('Registrar Aluno')}
-              />
-            </View>
-            <View style={styles.flatlist}>
-              <FlatList
-                data={alunos}
-                renderItem={({ item }) => (
-                  <View style={styles.card}>
-                    <Text style={styles.text}>Nome: {item.nome}</Text>
-                    <Text style={styles.text}>Matrícula: {item.matricula}</Text>
-                    <Text style={styles.text}>Cidade: {item.cidade}</Text>
-                  </View>
-                )}
-              />
-            </View>
-          </>
-          : <Text style={{alignSelf: 'center'}}>Não há dados!</Text>
+          : alunos.length
+            ? <>
+              <View style={styles.flatlist}>
+                <FlatList
+                  data={alunos}
+                  renderItem={({ item }) => (
+                    <View style={styles.card}>
+                      <Text style={styles.text}>Nome: {item.nome}</Text>
+                      <Text style={styles.text}>Matrícula: {item.matricula}</Text>
+                      <Text style={styles.text}>Cidade: {item.cidade}</Text>
+                    </View>
+                  )}
+                />
+              </View>
+            </>
+            : <Text style={{ alignSelf: 'center' }}>Não há dados!</Text>
         }
       </View>
     </>

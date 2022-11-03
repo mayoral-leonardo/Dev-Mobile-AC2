@@ -48,8 +48,8 @@ export default function Historico() {
                   data={historicos}
                   renderItem={({ item }) => (
                     <View style={styles.card}>
-                      <Text style={styles.text}>Ano: {item.ano}</Text>
-                      <Text style={styles.text}>Horário: {item.horario}</Text>
+                      <Text style={styles.text}>Aluno: {item.matricula}</Text>
+                      <Text style={styles.text}>Turma: {item.cod_turma}</Text>
                     </View>
                   )}
                 />
