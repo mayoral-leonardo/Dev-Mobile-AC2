@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { View, FlatList, Button, Text, ActivityIndicator } from 'react-native'
+import { View, FlatList, Text, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
-import { useTheme } from "../../contexts/theme"
-import { firebaseFunctions } from "../../firebase/firebaseFunctions"
+import { useTheme } from "../../../contexts/theme"
+import { firebaseFunctions } from "../../../firebase/firebaseFunctions"
 
-export default function Turmas() {
+export default function TurmaDetails({ route }) {
+  const { turmaId } = route.params
   const [update, setUpdate] = useState()
   const [loading, setLoading] = useState()
-  const [turmas, setTurmas] = useState([])
+  const [alunos, setAlunos] = useState([])
   const { theme } = useTheme()
   const navigation = useNavigation()
 
   useEffect(() => {
-    async function getTurmasFromDatabase() {
+    async function getAllAlunosFromTurma() {
       setLoading(true)
       try {
-        const response = await firebaseFunctions.getTurmas()
-        if (response) setTurmas(response)
+        const response = await firebaseFunctions.getAlunosFromSpecificTurma(turmaId)
+        if (response) setAlunos(response)
         setLoading(false)
 
       } catch (error) {
@@ -25,35 +26,25 @@ export default function Turmas() {
         setLoading(false)
       }
     }
-    getTurmasFromDatabase()
+    getAllAlunosFromTurma()
     navigation.addListener('focus', () => setUpdate(!update))
   }, [update, navigation])
 
   return (
     <>
       <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
-        <View style={styles.button}>
-          <Button
-            color={theme.primaryColor}
-            title='Registrar Turma'
-            onPress={() => navigation.navigate('Registrar Turma')}
-          />
-        </View>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
-          : turmas.length
+          : alunos.length
             ? <>
               <View style={styles.flatlist}>
                 <FlatList
-                  data={turmas}
+                  data={alunos}
                   renderItem={({ item }) => (
                     <View style={styles.card}>
-                      <Text style={styles.text}>Ano: {item.ano}</Text>
-                      <Text style={styles.text}>Horário: {item.horario}</Text>
-                      <Button
-                        title='Detalhes'
-                        onPress={() => navigation.navigate('Detalhes da Turma', { turmaId: item.cod_turma })}
-                      />
+                      <Text style={styles.text}>Nome: {item.nome}</Text>
+                      <Text style={styles.text}>Matrícula: {item.matricula}</Text>
+                      <Text style={styles.text}>Cidade: {item.cidade}</Text>
                     </View>
                   )}
                 />

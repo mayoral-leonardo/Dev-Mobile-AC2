@@ -68,6 +68,10 @@ async function getTurmas() {
   if (allData.length) return allData
 }
 
+async function getAlunosFromSpecificTurma(turmaId) {
+  await console.log(turmaId)
+}
+
 export const firebaseFunctions = {
   createAluno,
   createDisciplina,
@@ -78,5 +82,6 @@ export const firebaseFunctions = {
   getDisciplinas,
   getHistoricos,
   getProfessores,
-  getTurmas
+  getTurmas,
+  getAlunosFromSpecificTurma
 }
