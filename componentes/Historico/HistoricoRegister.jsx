@@ -25,7 +25,7 @@ export default function HistoricoRegister({ route }) {
   const [loadingAlunos, setLoadingAlunos] = useState()
   const [loadingTurmas, setLoadingTurmas] = useState()
 
-  function handleSubmit() {
+  function handleCreate() {
     const data = {
       cod_historico: codigoHistorico,
       matricula: codigoMatricula,
@@ -35,6 +35,16 @@ export default function HistoricoRegister({ route }) {
     }
 
     firebaseFunctions.createHistorico(data, () => navigation.navigate('Historico'))
+  }
+
+  function handleEdit() {
+    const data = {
+      frequencia: frequencia,
+      nota: nota,
+      docId: historico.docId
+    }
+
+    firebaseFunctions.updateHistorico(data, () => navigation.navigate('Historico'))
   }
 
   useEffect(() => {
@@ -143,7 +153,7 @@ export default function HistoricoRegister({ route }) {
               <Button
                 color={theme.primaryColor}
                 title='Enviar'
-                onPress={() => handleSubmit()}
+                onPress={isEdit ? () => handleEdit() : () => handleCreate()}
               />
             </View>
           </>

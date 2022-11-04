@@ -50,6 +50,8 @@ export default function Historico() {
                     <View style={styles.card}>
                       <Text style={styles.text}>Aluno: {item.matricula}</Text>
                       <Text style={styles.text}>Turma: {item.cod_turma}</Text>
+                      <Text style={styles.text}>Frequência: {item.frequencia}</Text>
+                      <Text style={styles.text}>Nota: {item.nota}</Text>
                       <Button
                         color={theme.primaryColor}
                         title='Editar'

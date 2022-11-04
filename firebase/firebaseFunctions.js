@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc,updateDoc,deleteDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from 'firebase/firestore'
 import db from './firebaseConfig'
 
 // Create functions
@@ -27,7 +27,7 @@ async function getAlunos() {
   const querySnapshot = await getDocs(collection(db, 'Aluno'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ id: doc.id, ...doc.data() })
+    allData.push({ ...doc.data(), docId: doc.id })
   })
   if (allData.length) return allData
 }
@@ -36,7 +36,7 @@ async function getDisciplinas() {
   const querySnapshot = await getDocs(collection(db, 'Disciplina'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ ...doc.data() })
+    allData.push({ ...doc.data(), docId: doc.id })
   })
   if (allData.length) return allData
 }
@@ -45,7 +45,7 @@ async function getHistoricos() {
   const querySnapshot = await getDocs(collection(db, 'Historico'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ ...doc.data() })
+    allData.push({ ...doc.data(), docId: doc.id })
   })
   if (allData.length) return allData
 }
@@ -54,7 +54,7 @@ async function getProfessores() {
   const querySnapshot = await getDocs(collection(db, 'Professor'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ ...doc.data() })
+    allData.push({ ...doc.data(), docId: doc.id })
   })
   if (allData.length) return allData
 }
@@ -63,7 +63,7 @@ async function getTurmas() {
   const querySnapshot = await getDocs(collection(db, 'Turma'))
   const allData = []
   querySnapshot.forEach((doc) => {
-    allData.push({ ...doc.data() })
+    allData.push({ ...doc.data(), docId: doc.id })
   })
   if (allData.length) return allData
 }
@@ -76,7 +76,8 @@ async function getAllAlunoInformation(alunoId) {
   await console.log(alunoId)
 }
 
-async function updateHistorico(data) {
+// Update Functions
+async function updateHistorico(data, onSuccess) {
   const docRef = doc(db, "Historico", data.docId);
 
   newData = {
@@ -84,9 +85,10 @@ async function updateHistorico(data) {
     nota: data.nota
   }
 
-  updateDoc(docRef, newData)
+  updateDoc(docRef, newData).then(() => onSuccess())
 }
 
+// Delete Functions
 async function deleteHistorico(docId) {
   deleteDoc(doc(db, "Historico", docId));
 }
