@@ -36,7 +36,7 @@ export default function Historico() {
           <Button
             color={theme.primaryColor}
             title='Registrar Histórico'
-            onPress={() => navigation.navigate('Registrar Historico', {historico: null})}
+            onPress={() => navigation.navigate('Registrar Historico', { historico: null })}
           />
         </View>
         {loading
@@ -52,11 +52,22 @@ export default function Historico() {
                       <Text style={styles.text}>Turma: {item.cod_turma}</Text>
                       <Text style={styles.text}>Frequência: {item.frequencia}</Text>
                       <Text style={styles.text}>Nota: {item.nota}</Text>
-                      <Button
-                        color={theme.primaryColor}
-                        title='Editar'
-                        onPress={() => navigation.navigate('Registrar Historico', { historico: {...item} })}
-                      />
+                      <View style={{ width: '25%', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Button
+                          color={theme.primaryColor}
+                          title='Editar'
+                          onPress={() => navigation.navigate('Registrar Historico', { historico: { ...item } })}
+                        />
+
+                        <Button
+                          color='#AA0000'
+                          title='Excluir'
+                          onPress={() => {
+                            firebaseFunctions.deleteHistorico(item.docId)
+                            setUpdate(!update)
+                          }}
+                        />
+                      </View>
                     </View>
                   )}
                 />
