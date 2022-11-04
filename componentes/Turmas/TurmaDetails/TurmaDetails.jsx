@@ -47,7 +47,7 @@ export default function TurmaDetails({ route }) {
                       <Text style={styles.text}>Cidade: {item.cidade}</Text>
                       <Button
                         title='Detalhes'
-                        onPress={() => navigation.navigate('Detalhes do Aluno', { alunoId: item.id })}
+                        onPress={() => navigation.navigate('Detalhes do Aluno', { aluno: {...item} })}
                       />
                     </View>
                   )}

@@ -69,11 +69,14 @@ async function getTurmas() {
 }
 
 async function getAlunosFromSpecificTurma(turmaId) {
-  await console.log(turmaId)
-}
+  const allHistoricos = await getHistoricos()
+  const allAlunos = await getAlunos()
 
-async function getAllAlunoInformation(alunoId) {
-  await console.log(alunoId)
+  const historicosFromSelectedTurma = allHistoricos.filter((historico) => historico.cod_turma === turmaId)
+  const matriculasInSpecificTurma = historicosFromSelectedTurma.map((historico) => historico.matricula)
+  const alunosFromSelectedTurma = allAlunos.filter((aluno) => matriculasInSpecificTurma.includes(aluno.matricula) )
+  
+  if (alunosFromSelectedTurma.length) return alunosFromSelectedTurma
 }
 
 // Update Functions
@@ -106,7 +109,6 @@ export const firebaseFunctions = {
   getProfessores,
   getTurmas,
   getAlunosFromSpecificTurma,
-  getAllAlunoInformation,
   updateHistorico,
   deleteHistorico
 }

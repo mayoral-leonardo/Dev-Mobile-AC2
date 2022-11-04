@@ -24,8 +24,8 @@ export const styles = StyleSheet.create({
     top: 60
   },
   card: {
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: '100%',
