@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { View, Button, FlatList, Text, ActivityIndicator } from 'react-native'
+import { View, Button, FlatList, Text, ActivityIndicator, Image } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../../contexts/theme"
 import { firebaseFunctions } from "../../../firebase/firebaseFunctions"
@@ -32,23 +32,32 @@ export default function TurmaDetails({ route }) {
 
   return (
     <>
-      <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
+      <View style={{ ...styles.main, justifyContent: loading ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
         {loading
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
           : alunos.length
             ? <>
               <View style={styles.flatlist}>
                 <FlatList
+                  numColumns={2}
+                  key={2}
                   data={alunos}
                   renderItem={({ item }) => (
                     <View style={styles.card}>
-                      <Text style={styles.text}>Nome: {item.nome}</Text>
-                      <Text style={styles.text}>Matrícula: {item.matricula}</Text>
-                      <Text style={styles.text}>Cidade: {item.cidade}</Text>
-                      <Button
-                        title='Detalhes'
-                        onPress={() => navigation.navigate('Detalhes do Aluno', { aluno: {...item} })}
-                      />
+                      <View style={{ width: '100%', height: '50%' }}>
+                        <Image
+                          source={require('../../../img/avatar.png')}
+                          style={{ width: '100%', height: '100%' }}
+                          resizeMode='contain'
+                        />
+                      </View>
+                      <View>
+                        <Text style={styles.text}>Nome: {item.nome}</Text>
+                        <Button
+                          title='Detalhes'
+                          onPress={() => navigation.navigate('Detalhes do Aluno', { aluno: { ...item } })}
+                        />
+                      </View>
                     </View>
                   )}
                 />
