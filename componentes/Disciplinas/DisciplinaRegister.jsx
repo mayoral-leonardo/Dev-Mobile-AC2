@@ -1,5 +1,5 @@
 import React from "react"
-import { View } from 'react-native'
+import { View, Alert } from 'react-native'
 import { styles } from './styles'
 import FormComponent from "../FormComponent/FormComponent"
 import { useTheme } from "../../contexts/theme"
@@ -14,7 +14,10 @@ export default function DisciplinaRegister() {
       <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
         <FormComponent
           type='Disciplinas'
-          onSuccess={() => navigation.navigate('Disciplinas')}
+          onSuccess={(message) => {
+            Alert.alert(message)
+            navigation.navigate('Disciplinas')
+          }}          onError={(message) => Alert.alert(message)}
           fields={[
             {
               name: 'cod_disc',

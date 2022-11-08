@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, Button, ActivityIndicator, Alert } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { useNavigation } from "@react-navigation/native"
@@ -34,7 +34,13 @@ export default function HistoricoRegister({ route }) {
       nota: nota
     }
 
-    firebaseFunctions.createHistorico(data, () => navigation.navigate('Historico'))
+    firebaseFunctions.createHistorico(
+      data,
+      (message) => {
+        Alert.alert(message)
+        navigation.navigate('Historico')
+      },
+      (message) => Alert.alert(message))
   }
 
   function handleEdit() {

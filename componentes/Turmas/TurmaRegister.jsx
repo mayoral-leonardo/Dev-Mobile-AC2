@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, Button, ActivityIndicator, Alert } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { useNavigation } from "@react-navigation/native"
@@ -31,7 +31,12 @@ export default function TurmaRegister() {
       horario: horario
     }
 
-    firebaseFunctions.createTurma(data, () => navigation.navigate('Turmas'))
+    firebaseFunctions.createTurma(data,
+      (message) => {
+        Alert.alert(message)
+        navigation.navigate('Turmas')
+      },
+      (message) => Alert.alert(message))
   }
 
   useEffect(() => {

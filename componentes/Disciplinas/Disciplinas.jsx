@@ -49,6 +49,7 @@ export default function Disciplinas() {
                   renderItem={({ item }) => (
                     <View style={styles.card}>
                       <Text style={styles.text}>Disciplina: {item.nome_disc}</Text>
+                      <Text style={styles.text}>Código: {item.cod_disc}</Text>
                       <Text style={styles.text}>Carga Horária: {item.carga_hor}</Text>
                     </View>
                   )}

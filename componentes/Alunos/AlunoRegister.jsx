@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import { View, Alert } from 'react-native'
 import { styles } from './styles'
 import FormComponent from "../FormComponent/FormComponent"
 import { useTheme } from "../../contexts/theme"
@@ -11,10 +11,14 @@ export default function AlunoRegister() {
 
   return (
     <>
-      <View style={{...styles.main, backgroundColor: theme.secondaryColor}}>
+      <View style={{ ...styles.main, backgroundColor: theme.secondaryColor }}>
         <FormComponent
           type='Alunos'
-          onSuccess={() => navigation.navigate('Alunos')}
+          onSuccess={(message) => {
+            Alert.alert(message)
+            navigation.navigate('Alunos')
+          }}
+          onError={(message) => Alert.alert(message)}
           fields={[
             {
               name: 'matricula',

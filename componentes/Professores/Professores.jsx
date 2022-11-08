@@ -49,6 +49,7 @@ export default function Professores() {
                   renderItem={({ item }) => (
                     <View style={styles.card}>
                       <Text style={styles.text}>Nome: {item.nome}</Text>
+                      <Text style={styles.text}>Código: {item.cod_prof}</Text>
                       <Text style={styles.text}>Endereço: {item.endereco}</Text>
                       <Text style={styles.text}>Cidade: {item.cidade}</Text>
                     </View>

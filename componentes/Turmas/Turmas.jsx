@@ -48,6 +48,7 @@ export default function Turmas() {
                   data={turmas}
                   renderItem={({ item }) => (
                     <View style={styles.card}>
+                      <Text style={styles.text}>Código: {item.cod_turma}</Text>
                       <Text style={styles.text}>Ano: {item.ano}</Text>
                       <Text style={styles.text}>Horário: {item.horario}</Text>
                       <Button
