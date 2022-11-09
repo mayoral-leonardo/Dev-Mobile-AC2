@@ -13,6 +13,8 @@ export default function TurmaRegister() {
   const [disciplinas, setDisciplinas] = useState([])
   const [professores, setProfessores] = useState([])
 
+  const [loading, setLoading] = useState()
+
   const [codigoTurma, setCodigoTurma] = useState()
   const [codigoDisciplina, setCodigoDisciplina] = useState()
   const [codigoProfessor, setCodigoProfessor] = useState()
@@ -22,7 +24,8 @@ export default function TurmaRegister() {
   const [loadingDisciplinas, setLoadingDisciplinas] = useState()
   const [loadingProfessores, setLoadingProfessores] = useState()
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    setLoading(true)
     const data = {
       cod_turma: codigoTurma,
       cod_disc: codigoDisciplina,
@@ -31,12 +34,20 @@ export default function TurmaRegister() {
       horario: horario
     }
 
-    firebaseFunctions.createTurma(data,
-      (message) => {
-        Alert.alert(message)
-        navigation.navigate('Turmas')
-      },
-      (message) => Alert.alert(message))
+    try {
+      await firebaseFunctions.createTurma(
+        data,
+        (message) => {
+          Alert.alert(message)
+          navigation.navigate('Turmas')
+        },
+        (message) => Alert.alert(message)
+      )
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -106,7 +117,7 @@ export default function TurmaRegister() {
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Código da Turma:</Text>
             <TextInput
-              placeholder={'cod_turma'}
+              placeholder='Código'
               autoCapitalize='none'
               style={styles.input}
               value={codigoTurma}
@@ -116,7 +127,7 @@ export default function TurmaRegister() {
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Ano:</Text>
             <TextInput
-              placeholder={'ano'}
+              placeholder='Ano'
               autoCapitalize='none'
               style={styles.input}
               value={ano}
@@ -125,7 +136,7 @@ export default function TurmaRegister() {
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Horário:</Text>
             <TextInput
-              placeholder={'horario'}
+              placeholder='Horário'
               autoCapitalize='none'
               style={styles.input}
               value={horario}
@@ -133,11 +144,14 @@ export default function TurmaRegister() {
             />
 
             <View style={styles.registerButton}>
-              <Button
-                color={theme.primaryColor}
-                title='Enviar'
-                onPress={() => handleSubmit()}
-              />
+              {loading
+                ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
+                : <Button
+                  color={theme.primaryColor}
+                  title='Enviar'
+                  onPress={() => handleSubmit()}
+                />
+              }
             </View>
           </>
           : <ActivityIndicator size={"large"} color={theme.primaryColor} />

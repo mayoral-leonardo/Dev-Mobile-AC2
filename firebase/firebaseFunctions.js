@@ -5,51 +5,66 @@ import db from './firebaseConfig'
 async function createAluno(data, onSuccess, onError) {
   const allAlunos = await getAlunos()
   const matriculaAlreadyExists = allAlunos.find((aluno) => aluno.matricula === data.matricula)
-  if (matriculaAlreadyExists) {
-    onError('Matrícula já cadastrada!')
-    return
-  }
-  addDoc(collection(db, "Aluno"), data).then(() => onSuccess('Aluno cadastrado com sucesso!'))
+
+  if (Object.values(data).every((value) => value !== undefined )) {
+    if (matriculaAlreadyExists) {
+      onError('Matrícula já cadastrada!')
+      return
+    }
+    addDoc(collection(db, "Aluno"), data).then(() => onSuccess('Aluno cadastrado com sucesso!'))
+  } else onError('Preencha todos os campos!')
 }
 
 async function createDisciplina(data, onSuccess, onError) {
   const allDisciplinas = await getDisciplinas()
   const disciplinaAlreadyExists = allDisciplinas.find((disciplina) => disciplina.cod_disc === data.cod_disc)
-  if (disciplinaAlreadyExists) {
-    onError('Disciplina já cadastrada!')
-    return
-  }
-  addDoc(collection(db, "Disciplina"), data).then(() => onSuccess('Disciplina cadastrada com sucesso!'))
+
+  if (Object.values(data).every((value) => value !== undefined )) {
+    if (disciplinaAlreadyExists) {
+      onError('Disciplina já cadastrada!')
+      return
+    }
+    addDoc(collection(db, "Disciplina"), data).then(() => onSuccess('Disciplina cadastrada com sucesso!'))
+  } else onError('Preencha todos os campos!')
 }
 
 async function createProfessor(data, onSuccess, onError) {
   const allProfessores = await getProfessores()
   const professorAlreadyExists = allProfessores.find((professor) => professor.cod_prof === data.cod_prof)
-  if (professorAlreadyExists) {
-    onError('Professor já cadastrado!')
-    return
-  }
-  addDoc(collection(db, "Professor"), data).then(() => onSuccess('Professor cadastrado com sucesso!'))
+
+  if (Object.values(data).every((value) => value !== undefined )) {
+    if (professorAlreadyExists) {
+      onError('Professor já cadastrado!')
+      return
+    }
+    addDoc(collection(db, "Professor"), data).then(() => onSuccess('Professor cadastrado com sucesso!'))
+  } else onError('Preencha todos os campos!')
 }
 
 async function createHistorico(data, onSuccess, onError) {
   const allHistoricos = await getHistoricos()
   const historicoAlreadyExists = allHistoricos.find((historico) => historico.cod_historico === data.cod_historico)
-  if (historicoAlreadyExists) {
-    onError('Histórico já cadastrado!')
-    return
-  }
-  addDoc(collection(db, "Historico"), data).then(() => onSuccess('Histórico cadastrado com sucesso!'))
-}
 
+  if (Object.values(data).every((value) => value !== undefined )) {
+    if (historicoAlreadyExists) {
+      onError('Histórico já cadastrado!')
+      return
+    }
+    addDoc(collection(db, "Historico"), data).then(() => onSuccess('Histórico cadastrado com sucesso!'))
+  } else onError('Preencha todos os campos!')
+}
+  
 async function createTurma(data, onSuccess, onError) {
   const allTurmas = await getTurmas()
   const turmaAlreadyExists = allTurmas.find((turma) => turma.cod_turma === data.cod_turma)
-  if (turmaAlreadyExists) {
-    onError('Turma já cadastrada!')
-    return
-  }
-  addDoc(collection(db, "Turma"), data).then(() => onSuccess('Turma cadastrada com sucesso!'))
+
+  if (Object.values(data).every((value) => value !== undefined )) {
+    if (turmaAlreadyExists) {
+      onError('Turma já cadastrada!')
+      return
+    }
+    addDoc(collection(db, "Turma"), data).then(() => onSuccess('Turma cadastrada com sucesso!'))
+  } else onError('Preencha todos os campos!')
 }
 
 // Get functions
