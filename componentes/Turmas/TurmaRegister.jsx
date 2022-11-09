@@ -13,19 +13,18 @@ export default function TurmaRegister() {
   const [disciplinas, setDisciplinas] = useState([])
   const [professores, setProfessores] = useState([])
 
-  const [loading, setLoading] = useState()
-
   const [codigoTurma, setCodigoTurma] = useState()
   const [codigoDisciplina, setCodigoDisciplina] = useState()
   const [codigoProfessor, setCodigoProfessor] = useState()
   const [ano, setAno] = useState()
   const [horario, setHorario] = useState()
   const [update, setUpdate] = useState()
+  const [loadingSubmit, setLoadingSubmit] = useState()
   const [loadingDisciplinas, setLoadingDisciplinas] = useState()
   const [loadingProfessores, setLoadingProfessores] = useState()
 
   async function handleSubmit() {
-    setLoading(true)
+    setLoadingSubmit(true)
     const data = {
       cod_turma: codigoTurma,
       cod_disc: codigoDisciplina,
@@ -46,7 +45,7 @@ export default function TurmaRegister() {
     } catch (error) {
       console.log(error)
     } finally {
-      setLoading(false)
+      setLoadingSubmit(false)
     }
   }
 
@@ -144,7 +143,7 @@ export default function TurmaRegister() {
             />
 
             <View style={styles.registerButton}>
-              {loading
+              {loadingSubmit
                 ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
                 : <Button
                   color={theme.primaryColor}
