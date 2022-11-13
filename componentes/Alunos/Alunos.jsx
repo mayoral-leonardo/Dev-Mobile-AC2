@@ -31,7 +31,7 @@ export default function Alunos() {
 
   return (
     <>
-      <View style={{ ...styles.main, justifyContent: loading ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
+      <View style={{ ...styles.main, justifyContent: loading  || !alunos.length? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
         <View style={styles.button}>
           <Button
             color={theme.primaryColor}
@@ -56,7 +56,7 @@ export default function Alunos() {
                 />
               </View>
             </>
-            : <Text style={{ alignSelf: 'center' }}>Não há dados!</Text>
+            : <Text style={{ alignSelf: 'center', color: '#FFFFFF' }}>Não há dados!</Text>
         }
       </View>
     </>

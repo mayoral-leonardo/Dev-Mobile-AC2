@@ -47,7 +47,7 @@ export default function Turmas() {
 
   return (
     <>
-      <View style={{ ...styles.main, justifyContent: loading ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
+      <View style={{ ...styles.main, justifyContent: loading || !turmas.length ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
         <View style={styles.button}>
           <Button
             color={theme.primaryColor}

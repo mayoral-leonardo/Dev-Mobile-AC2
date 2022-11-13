@@ -60,7 +60,7 @@ export default function Historico() {
 
   return (
     <>
-      <View style={{ ...styles.main, justifyContent: loading ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
+      <View style={{ ...styles.main, justifyContent: loading || !historicos.length ? 'center' : 'flex-start', backgroundColor: theme.secondaryColor }}>
         <View style={styles.button}>
           <Button
             color={theme.primaryColor}

@@ -4,7 +4,8 @@ import db from './firebaseConfig'
 // CREATE FUNCTIONS
 async function createAluno(data, onSuccess, onError) {
   const allAlunos = await getAlunos()
-  const matriculaAlreadyExists = allAlunos.find((aluno) => aluno.matricula === data.matricula)
+  let matriculaAlreadyExists = null
+  if (allAlunos && allAlunos.length) matriculaAlreadyExists = allAlunos.find((aluno) => aluno.matricula === data.matricula)
 
   if (Object.values(data).every((value) => value !== undefined )) {
     if (matriculaAlreadyExists) {
@@ -17,7 +18,8 @@ async function createAluno(data, onSuccess, onError) {
 
 async function createDisciplina(data, onSuccess, onError) {
   const allDisciplinas = await getDisciplinas()
-  const disciplinaAlreadyExists = allDisciplinas.find((disciplina) => disciplina.cod_disc === data.cod_disc)
+  let disciplinaAlreadyExists = null
+  if (allDisciplinas && allDisciplinas.length) disciplinaAlreadyExists = allDisciplinas.find((disciplina) => disciplina.cod_disc === data.cod_disc)
 
   if (Object.values(data).every((value) => value !== undefined )) {
     if (disciplinaAlreadyExists) {
@@ -30,7 +32,8 @@ async function createDisciplina(data, onSuccess, onError) {
 
 async function createProfessor(data, onSuccess, onError) {
   const allProfessores = await getProfessores()
-  const professorAlreadyExists = allProfessores.find((professor) => professor.cod_prof === data.cod_prof)
+  let professorAlreadyExists = null
+  if (allProfessores && allProfessores.length) professorAlreadyExists = allProfessores.find((professor) => professor.cod_prof === data.cod_prof)
 
   if (Object.values(data).every((value) => value !== undefined )) {
     if (professorAlreadyExists) {
@@ -43,7 +46,8 @@ async function createProfessor(data, onSuccess, onError) {
 
 async function createHistorico(data, onSuccess, onError) {
   const allHistoricos = await getHistoricos()
-  const historicoAlreadyExists = allHistoricos.find((historico) => historico.cod_historico === data.cod_historico)
+  let historicoAlreadyExists = null
+  if(allHistoricos && allHistoricos.length) historicoAlreadyExists = allHistoricos.find((historico) => historico.cod_historico === data.cod_historico)
 
   if (Object.values(data).every((value) => value !== undefined )) {
     if (historicoAlreadyExists) {
@@ -56,7 +60,8 @@ async function createHistorico(data, onSuccess, onError) {
   
 async function createTurma(data, onSuccess, onError) {
   const allTurmas = await getTurmas()
-  const turmaAlreadyExists = allTurmas.find((turma) => turma.cod_turma === data.cod_turma)
+  let turmaAlreadyExists = null
+  if(allTurmas && allTurmas.length) turmaAlreadyExists = allTurmas.find((turma) => turma.cod_turma === data.cod_turma)
 
   if (Object.values(data).every((value) => value !== undefined )) {
     if (turmaAlreadyExists) {
@@ -135,7 +140,7 @@ async function getHistoricosOfSpecificAluno(alunoId) {
 async function updateHistorico(data, onSuccess) {
   const docRef = doc(db, "Historico", data.docId);
 
-  newData = {
+  const newData = {
     frequencia:data.frequencia,
     nota: data.nota
   }

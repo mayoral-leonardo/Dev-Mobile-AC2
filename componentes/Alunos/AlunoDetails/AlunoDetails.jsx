@@ -69,8 +69,6 @@ export default function AlunoDetails({ route }) {
           ? <ActivityIndicator size={"large"} color={theme.primaryColor} />
           : historicos.length
             ? <FlatList
-              numColumns={2}
-              key={2}
               data={historicos}
               renderItem={({ item }) => (
                 <View style={styles.card}>
