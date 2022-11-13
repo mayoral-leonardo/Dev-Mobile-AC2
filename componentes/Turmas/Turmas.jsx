@@ -5,10 +5,18 @@ import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { firebaseFunctions } from "../../firebase/firebaseFunctions"
 
+function getDisciplinaName (cod_disc, allDisciplinas) {
+  if (!cod_disc || !allDisciplinas.length) return null
+
+  const selectedDisciplina = allDisciplinas.find((disciplina) => disciplina.cod_disc === cod_disc)
+  if (selectedDisciplina) return selectedDisciplina.nome_disc
+}
+
 export default function Turmas() {
   const [update, setUpdate] = useState()
   const [loading, setLoading] = useState()
   const [turmas, setTurmas] = useState([])
+  const [disciplinas, setDisciplinas] = useState([])
   const { theme } = useTheme()
   const navigation = useNavigation()
 
@@ -25,7 +33,21 @@ export default function Turmas() {
         setLoading(false)
       }
     }
+
+    async function getDisciplinasFromDatabase() {
+      setLoading(true)
+      try {
+        const response = await firebaseFunctions.getDisciplinas()
+        if (response) setDisciplinas(response)
+        setLoading(false)
+
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
     getTurmasFromDatabase()
+    getDisciplinasFromDatabase()
     navigation.addListener('focus', () => setUpdate(!update))
   }, [update, navigation])
 
@@ -49,6 +71,7 @@ export default function Turmas() {
                   renderItem={({ item }) => (
                     <View style={styles.card}>
                       <Text style={styles.text}>Código: {item.cod_turma}</Text>
+                      <Text style={styles.text}>Disciplina: {getDisciplinaName(item.cod_disc, disciplinas)}</Text>
                       <Text style={styles.text}>Ano: {item.ano}</Text>
                       <Text style={styles.text}>Horário: {item.horario}</Text>
                       <Button
