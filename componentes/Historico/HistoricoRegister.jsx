@@ -129,7 +129,7 @@ export default function HistoricoRegister({ route }) {
 
                 <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Código do Histórico:</Text>
                 <TextInput
-                  placeholder={'cod_historico'}
+                  placeholder={'Digite o código do histórico'}
                   autoCapitalize='none'
                   style={styles.input}
                   value={codigoHistorico}
@@ -139,7 +139,7 @@ export default function HistoricoRegister({ route }) {
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Frequência:</Text>
             <TextInput
-              placeholder={'frequencia'}
+              placeholder={'Digite a frequência'}
               autoCapitalize='none'
               style={styles.input}
               value={frequencia}
@@ -148,7 +148,7 @@ export default function HistoricoRegister({ route }) {
 
             <Text style={{ fontSize: 24, color: '#FFFFFF' }}>Nota:</Text>
             <TextInput
-              placeholder={'nota'}
+              placeholder={'Digite a nota'}
               autoCapitalize='none'
               style={styles.input}
               value={nota}

@@ -4,13 +4,7 @@ import { View, FlatList, Button, Text, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { firebaseFunctions } from "../../firebase/firebaseFunctions"
-
-function getDisciplinaName (cod_disc, allDisciplinas) {
-  if (!cod_disc || !allDisciplinas.length) return null
-
-  const selectedDisciplina = allDisciplinas.find((disciplina) => disciplina.cod_disc === cod_disc)
-  if (selectedDisciplina) return selectedDisciplina.nome_disc
-}
+import { getDisciplinaName } from "../../utils/utils"
 
 export default function Turmas() {
   const [update, setUpdate] = useState()

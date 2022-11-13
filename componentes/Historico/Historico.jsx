@@ -4,14 +4,7 @@ import { View, FlatList, Button, Text, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { firebaseFunctions } from "../../firebase/firebaseFunctions"
-
-function getDisciplinaName (cod_turma, allTurmas ,allDisciplinas) {
-  if (!cod_turma || !allTurmas.length || !allDisciplinas.length) return null
-  const selectedTurma = allTurmas.find((turma) => turma.cod_turma === cod_turma)
-  let selectedDisciplina = {}
-  if (selectedTurma) selectedDisciplina = allDisciplinas.find((disciplina) => disciplina.cod_disc === selectedTurma.cod_disc)
-  if (!!selectedDisciplina) return selectedDisciplina.nome_disc
-}
+import { getDisciplinaNameWithTurmaCode } from "../../utils/utils"
 
 export default function Historico() {
   const [update, setUpdate] = useState()
@@ -86,7 +79,7 @@ export default function Historico() {
                     <View style={styles.card}>
                       <Text style={styles.text}>Aluno: {item.matricula}</Text>
                       <Text style={styles.text}>Turma: {item.cod_turma}</Text>
-                      <Text style={styles.text}>Disciplina: {getDisciplinaName(item.cod_turma, turmas, disciplinas)}</Text>
+                      <Text style={styles.text}>Disciplina: {getDisciplinaNameWithTurmaCode(item.cod_turma, turmas, disciplinas)}</Text>
                       <Text style={styles.text}>Frequência: {item.frequencia}</Text>
                       <Text style={styles.text}>Nota: {item.nota}</Text>
                       <View style={{ width: '25%', flexDirection: 'row', justifyContent: 'space-between' }}>

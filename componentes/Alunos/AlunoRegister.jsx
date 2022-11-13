@@ -35,10 +35,6 @@ export default function AlunoRegister() {
             {
               name: 'cidade',
               placeholder: 'Digite a cidade'
-            },
-            {
-              name: 'foto',
-              placeholder: 'Insira a foto'
             }
           ]}
         />
