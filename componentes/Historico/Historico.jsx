@@ -5,10 +5,20 @@ import { styles } from './styles'
 import { useTheme } from "../../contexts/theme"
 import { firebaseFunctions } from "../../firebase/firebaseFunctions"
 
+function getDisciplinaName (cod_turma, allTurmas ,allDisciplinas) {
+  if (!cod_turma || !allTurmas.length || !allDisciplinas.length) return null
+  const selectedTurma = allTurmas.find((turma) => turma.cod_turma === cod_turma)
+  let selectedDisciplina = {}
+  if (selectedTurma) selectedDisciplina = allDisciplinas.find((disciplina) => disciplina.cod_disc === selectedTurma.cod_disc)
+  if (!!selectedDisciplina) return selectedDisciplina.nome_disc
+}
+
 export default function Historico() {
   const [update, setUpdate] = useState()
   const [loading, setLoading] = useState()
   const [historicos, setHistoricos] = useState([])
+  const [turmas, setTurmas] = useState([])
+  const [disciplinas, setDisciplinas] = useState([])
   const { theme } = useTheme()
   const navigation = useNavigation()
 
@@ -25,7 +35,33 @@ export default function Historico() {
         setLoading(false)
       }
     }
+    async function getTurmasFromDatabase() {
+      setLoading(true)
+      try {
+        const response = await firebaseFunctions.getTurmas()
+        if (response) setTurmas(response)
+        setLoading(false)
+
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
+    async function getDisciplinasFromDatabase() {
+      setLoading(true)
+      try {
+        const response = await firebaseFunctions.getDisciplinas()
+        if (response) setDisciplinas(response)
+        setLoading(false)
+
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
     getHistoricosFromDatabase()
+    getTurmasFromDatabase()
+    getDisciplinasFromDatabase()
     navigation.addListener('focus', () => setUpdate(!update))
   }, [update, navigation])
 
@@ -50,6 +86,7 @@ export default function Historico() {
                     <View style={styles.card}>
                       <Text style={styles.text}>Aluno: {item.matricula}</Text>
                       <Text style={styles.text}>Turma: {item.cod_turma}</Text>
+                      <Text style={styles.text}>Disciplina: {getDisciplinaName(item.cod_turma, turmas, disciplinas)}</Text>
                       <Text style={styles.text}>Frequência: {item.frequencia}</Text>
                       <Text style={styles.text}>Nota: {item.nota}</Text>
                       <View style={{ width: '25%', flexDirection: 'row', justifyContent: 'space-between' }}>
