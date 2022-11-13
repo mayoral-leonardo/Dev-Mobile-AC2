@@ -1,7 +1,7 @@
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc } from 'firebase/firestore'
 import db from './firebaseConfig'
 
-// Create functions
+// CREATE FUNCTIONS
 async function createAluno(data, onSuccess, onError) {
   const allAlunos = await getAlunos()
   const matriculaAlreadyExists = allAlunos.find((aluno) => aluno.matricula === data.matricula)
@@ -67,7 +67,7 @@ async function createTurma(data, onSuccess, onError) {
   } else onError('Preencha todos os campos!')
 }
 
-// Get functions
+// GET FUNCTIONS
 async function getAlunos() {
   const querySnapshot = await getDocs(collection(db, 'Aluno'))
   const allData = []
@@ -124,7 +124,14 @@ async function getAlunosFromSpecificTurma(turmaId) {
   if (alunosFromSelectedTurma.length) return alunosFromSelectedTurma
 }
 
-// Update Functions
+async function getHistoricosOfSpecificAluno(alunoId) {
+  const allHistoricos = await getHistoricos()
+  const historicosFromSelectedAluno = allHistoricos.filter((historico) => historico.matricula === alunoId)
+  
+  if (historicosFromSelectedAluno.length) return historicosFromSelectedAluno
+}
+
+// UPDATE FUNCTIONS
 async function updateHistorico(data, onSuccess) {
   const docRef = doc(db, "Historico", data.docId);
 
@@ -136,7 +143,7 @@ async function updateHistorico(data, onSuccess) {
   updateDoc(docRef, newData).then(() => onSuccess('Aluno cadastrado com sucesso!'))
 }
 
-// Delete Functions
+// DELETE FUNCTIONS
 async function deleteHistorico(docId) {
   deleteDoc(doc(db, "Historico", docId));
 }
@@ -154,6 +161,7 @@ export const firebaseFunctions = {
   getProfessores,
   getTurmas,
   getAlunosFromSpecificTurma,
+  getHistoricosOfSpecificAluno,
   updateHistorico,
   deleteHistorico
 }
